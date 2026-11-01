@@ -12,6 +12,15 @@ Pronóstico mensual del Índice de Precios Agropecuarios de la Bolsa Mercantil d
 |`requirements.txt`|Dependencias de Python|
 |`data/`|Colocar aquí los dos archivos de la BMC (ver abajo)|
 | `informe/` | Informe completo (`Informe_IPAP_RetoB.docx`) y figuras usadas en este README |
+| `outputs/` | Resultados generados por el notebook (detalle abajo) |
+| `outputs/Resultados_IPAP_RetoB.xlsx` | Todas las tablas de resultados en un solo Excel |
+| `outputs/prueba_historica.csv` | Real, predicho y error por mes (ago-2025 a jul-2026) |
+| `outputs/pronostico_futuro.csv` | Pronóstico a 12 meses con banda del 80 % |
+| `outputs/fig1_datos.png` | Gráfica de los datos |
+| `outputs/fig2_prueba.png` | Gráfica de la prueba histórica |
+| `outputs/fig3_ingenuo.png` | Gráfica de comparación con el modelo ingenuo |
+| `outputs/fig4_pronostico.png` | Gráfica del pronóstico a 12 meses |
+| `informe/` | Informe completo (`Informe_IPAP_RetoB.docx`), informe adicional (`Informe_Adicional_IPAP_RetoB.docx`) y figuras usadas en este README |
 
 ## Tabla de contenidos
  
