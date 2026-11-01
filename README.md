@@ -20,7 +20,6 @@ Pronóstico mensual del Índice de Precios Agropecuarios de la Bolsa Mercantil d
 | `outputs/fig2_prueba.png` | Gráfica de la prueba histórica |
 | `outputs/fig3_ingenuo.png` | Gráfica de comparación con el modelo ingenuo |
 | `outputs/fig4_pronostico.png` | Gráfica del pronóstico a 12 meses |
-| `informe/` | Informe completo (`Informe_IPAP_RetoB.docx`), informe adicional (`Informe_Adicional_IPAP_RetoB.docx`) y figuras usadas en este README |
 
 ## Tabla de contenidos
  
