@@ -10,7 +10,7 @@ Pronóstico mensual del Índice de Precios Agropecuarios de la Bolsa Mercantil d
 |-|-|
 |`IPAP\_RetoB\_Colab.ipynb`|Código completo: datos, modelos, prueba histórica, diagnóstico, pronóstico y gráficas|
 |`requirements.txt`|Dependencias de Python|
-|`data/`|Colocar aquí los dos archivos de la BMC (ver abajo)|
+|`data/`|Colocar aquí los dos archivos de la BMC|
 | `informe/` | Informe completo (`Informe_IPAP_RetoB.docx`) y figuras usadas en este README |
 | `outputs/` | Resultados generados por el notebook (detalle abajo) |
 | `outputs/Resultados_IPAP_RetoB.xlsx` | Todas las tablas de resultados en un solo Excel |
