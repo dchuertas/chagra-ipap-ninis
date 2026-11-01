@@ -2,6 +2,8 @@
 
 Pronóstico mensual del Índice de Precios Agropecuarios de la Bolsa Mercantil de Colombia (Total agropecuario), con prueba histórica de 12 meses (MAPE) y pronóstico a 12 meses que incluye octubre de 2026.
 
+**Resultado clave:** MAPE de **2,98 %** en la prueba histórica (35 % menor que el modelo ingenuo, 4,62 %) y pronóstico para **octubre de 2026 de 252,93 puntos** (banda del 80 %: 240,95 – 272,44).
+
 ## Contenido
 
 |Archivo|Descripción|
@@ -9,6 +11,18 @@ Pronóstico mensual del Índice de Precios Agropecuarios de la Bolsa Mercantil d
 |`IPAP\_RetoB\_Colab.ipynb`|Código completo: datos, modelos, prueba histórica, diagnóstico, pronóstico y gráficas|
 |`requirements.txt`|Dependencias de Python|
 |`data/`|Colocar aquí los dos archivos de la BMC (ver abajo)|
+| `informe/` | Informe completo (`Informe_IPAP_RetoB.docx`) y figuras usadas en este README |
+
+## Tabla de contenidos
+ 
+1. [Objetivo](#objetivo)
+2. [Datos](#datos-bmc)
+3. [Cómo ejecutar](#cómo-ejecutar)
+4. [Metodología](#metodología)
+5. [Salidas](#salidas-outputs)
+
+## Objetivo
+Pronosticar el IPAP-BMC Total agropecuario a 12 meses, incluido octubre de 2026, con un modelo reproducible cuya precisión se verifica en una prueba histórica sobre los últimos 12 meses observados. El pronóstico anticipa la dirección y la magnitud de los precios agropecuarios para apoyar decisiones de compra, venta y cobertura en el mercado.
 
 ## Datos (BMC)
 
@@ -31,7 +45,19 @@ pip install -r requirements.txt
 jupyter notebook IPAP\_RetoB\_Colab.ipynb   # con los dos Excel en la misma carpeta
 ```
 
-## Modelo
+## Metodología
+ 
+Todos los modelos trabajan con el logaritmo del índice, de modo que los cambios son porcentuales y el pronóstico nunca es negativo:
+
+$$\ell_t = \ln(\mathrm{IPAP}_t), \qquad \Delta\ell_t = \ell_t - \ell_{t-1} \tag{1}$$
+
+### Línea base: modelo ingenuo
+ 
+Repite el último valor observado en todos los meses futuros. Equivale a suponer que el IPAP sigue una caminata aleatoria, donde el mejor pronóstico es el dato de hoy. Es el estándar mínimo en pronóstico de precios: un modelo solo aporta valor si se equivoca menos que el ingenuo.
+ 
+$$\widehat{\mathrm{IPAP}}_{T+h} = \mathrm{IPAP}_T, \qquad h = 1,\dots,12 \tag{2}$$
+
+## Chagra: modelo final
 
 Promedio simple de cuatro componentes sobre ln(IPAP):
 
@@ -40,7 +66,9 @@ Promedio simple de cuatro componentes sobre ln(IPAP):
 3. Telaraña: regresión ridge directa por horizonte con momentum del IPAP e índice mediano de precios de transacciones BMC.
 4. Bottom-up sectorial: ETS amortiguado por sector + pesos NNLS.
 
-Línea base: modelo ingenuo (último valor observado).
+**Combinación.** El pronóstico final es el promedio simple de los cuatro componentes. Cada uno capta un rasgo distinto (tendencia, estacionalidad, ciclo y mercado, sectores) y cuando uno sobreestima otro suele subestimar; los pesos iguales no se estiman, así que no sobreajustan el pasado:
+ 
+$$\widehat{\mathrm{IPAP}}_{T+h} = \tfrac14\left(\hat y^{ARIMA}_{T+h} + \hat y^{Est}_{T+h} + \hat y^{Tel}_{T+h} + \hat y^{BU}_{T+h}\right) \tag{17}$$
 
 ## Resultados
 
