@@ -55,7 +55,7 @@ $$\ell_t = \ln(\mathrm{IPAP}_t), \qquad \Delta\ell_t = \ell_t - \ell_{t-1} \qqua
  
 Repite el último valor observado en todos los meses futuros. Equivale a suponer que el IPAP sigue una caminata aleatoria, donde el mejor pronóstico es el dato de hoy. Es el estándar mínimo en pronóstico de precios: un modelo solo aporta valor si se equivoca menos que el ingenuo.
  
-$$\widehat{\mathrm{IPAP}}_{T+h} = \mathrm{IPAP}_T, \qquad h = 1,\dots,12 \tag{2}$$
+$$\widehat{\mathrm{IPAP}}_{T+h} = \mathrm{IPAP}_T, \qquad h = 1,\dots,12 \qquad (2)$$
 
 ## Chagra: modelo final
 
@@ -68,8 +68,8 @@ Promedio simple de cuatro componentes sobre ln(IPAP):
 
 **Combinación.** El pronóstico final es el promedio simple de los cuatro componentes. Cada uno capta un rasgo distinto (tendencia, estacionalidad, ciclo y mercado, sectores) y cuando uno sobreestima otro suele subestimar; los pesos iguales no se estiman, así que no sobreajustan el pasado:
  
-$$\widehat{\mathrm{IPAP}}_{T+h} = \tfrac14\left(\hat y^{ARIMA}_{T+h} + \hat y^{Est}_{T+h} + \hat y^{Tel}_{T+h} + \hat y^{BU}_{T+h}\right) \tag{17}$$
-
+$$\widehat{\mathrm{IPAP}}_{T+h} = \tfrac14\left(\hat y^{ARIMA}_{T+h} + \hat y^{Est}_{T+h} + \hat y^{Tel}_{T+h} + \hat y^{BU}_{T+h}\right) \qquad (17)$$
+ 
 ## Resultados
 
 ||Modelo final|Ingenuo|
