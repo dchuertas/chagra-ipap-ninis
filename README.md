@@ -49,7 +49,7 @@ jupyter notebook IPAP\_RetoB\_Colab.ipynb   # con los dos Excel en la misma carp
  
 Todos los modelos trabajan con el logaritmo del índice, de modo que los cambios son porcentuales y el pronóstico nunca es negativo:
 
-$$\ell_t = \ln(\mathrm{IPAP}_t), \qquad \Delta\ell_t = \ell_t - \ell_{t-1} \tag{1}$$
+$$\ell_t = \ln(\mathrm{IPAP}_t), \qquad \Delta\ell_t = \ell_t - \ell_{t-1} \qquad (1)$$
 
 ### Línea base: modelo ingenuo
  
